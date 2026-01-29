@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl"
+       version="1.0"
+       class="in-text"
+       default-locale="en-US">
+
+  <info>
+    <title>Virtual Economics – Numeric APA 7</title>
+    <id>http://www.local/styles/virtual-economics-numeric-apa7</id>
+    <author>
+      <name>Custom CSL</name>
+    </author>
+    <category citation-format="numeric"/>
+    <category field="economics"/>
+    <summary>
+      Numeric (Vancouver-style) in-text citations with APA 7 formatted reference list
+      (full author names, no et al. in bibliography).
+    </summary>
+    <updated>2026-01-29</updated>
+  </info>
+
+  <!-- ===================== -->
+  <!-- IN-TEXT CITATION -->
+  <!-- ===================== -->
+  <citation collapse="citation-number">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+    <layout prefix="[" suffix="]" delimiter=",">
+      <text variable="citation-number"/>
+    </layout>
+  </citation>
+
+  <!-- ===================== -->
+  <!-- BIBLIOGRAPHY -->
+  <!-- ===================== -->
+  <bibliography hanging-indent="true" entry-spacing="0" line-spacing="1">
+    <sort>
+      <key variable="citation-number"/>
+    </sort>
+
+    <layout suffix=".">
+      <!-- Citation number -->
+      <text variable="citation-number" suffix=". "/>
+
+      <!-- Authors: full list, no et al. -->
+      <names variable="author">
+        <name name-as-sort-order="first"
+              delimiter=", "
+              delimiter-precedes-last="always"
+              initialize-with="."/>
+      </names>
+
+      <!-- Year -->
+      <date variable="issued" prefix=" (" suffix=").">
+        <date-part name="year"/>
+      </date>
+
+      <!-- Title: sentence case (APA 7) -->
+      <text variable="title" text-case="sentence" prefix=" "/>
+
+      <!-- Journal title -->
+      <text variable="container-title" prefix=". " font-style="italic"/>
+
+      <!-- Volume (italic) and Issue (only if exists) -->
+      <choose>
+        <if variable="volume">
+          <group prefix=", ">
+            <text variable="volume" font-style="italic"/>
+            <choose>
+              <if variable="issue">
+                <group prefix="(" suffix=")">
+                  <text variable="issue"/>
+                </group>
+              </if>
+            </choose>
+          </group>
+        </if>
+      </choose>
+
+      <!-- Pages -->
+      <text variable="page" prefix=", "/>
+
+      <!-- DOI -->
+      <choose>
+        <if variable="DOI">
+          <text variable="DOI" prefix=". https://doi.org/"/>
+        </if>
+      </choose>
+    </layout>
+  </bibliography>
+
+</style>
